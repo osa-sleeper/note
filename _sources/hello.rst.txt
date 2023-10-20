@@ -3,7 +3,6 @@ Hello test
 
 Sphinx Note!
 test!!!!!
-yyyy
 
 =====  =====  =======
 A      B      A and B
