@@ -52,6 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">ハンズオン</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">システム構成図</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cloud9">Cloud9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kinesis-data-stream">Kinesis Data Stream</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#iam">IAM</a></li>
 </ul>
 </li>
@@ -176,13 +177,15 @@
 <p class="admonition-title">警告</p>
 <p>Dummy Clientについて記述</p>
 </div>
-<dl class="simple">
-<dt>Kinesis Data Stream</dt><dd><p>Kinesis Data Streamを使用しない場合、以下の問題が発生しうる
-* 突発的なメッセージ増減にDBが対応できない可能性がある
-* IoTルールからメッセージ単位でLambdaを起動するとコストが上がる
-* Lambdaの起動が失敗した場合、数回のリトライ後、データをロストする可能性がある</p>
-</dd>
-</dl>
+</section>
+<section id="kinesis-data-stream">
+<h3>Kinesis Data Stream<a class="headerlink" href="#kinesis-data-stream" title="Link to this heading"></a></h3>
+<p>Kinesis Data Streamを使用しない場合、以下の問題が発生しうる</p>
+<ul class="simple">
+<li><p>突発的なメッセージ増減にDBが対応できない可能性がある</p></li>
+<li><p>IoTルールからメッセージ単位でLambdaを起動するとコストが上がる</p></li>
+<li><p>Lambdaの起動が失敗した場合、数回のリトライ後、データをロストする可能性がある</p></li>
+</ul>
 </section>
 <section id="iam">
 <h3>IAM<a class="headerlink" href="#iam" title="Link to this heading"></a></h3>
