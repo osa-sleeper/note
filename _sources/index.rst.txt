@@ -9,12 +9,12 @@
    rst.rst
 
 
-まとめ
-==========
+
 .. toctree::
    :maxdepth: 3
+   :caption: Activity:
 
-   記載例.rst
+   Activity.rst
 
 Indices and tables
 ==================
