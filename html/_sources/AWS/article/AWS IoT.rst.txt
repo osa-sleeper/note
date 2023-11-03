@@ -1,0 +1,113 @@
+AWS IoT
+==========
+
+Overview
+----------
+工事中
+
+
+ハンズオン
+----------
+以下ハンズオンメモ
+
+システム構成図
+^^^^^^^^^^
+ハンズオン環境の構成と各サービスの概要・役割を以下に示す。
+
+.. image:: ./images/AWS_IoT_構成図(ハンズオン).png
+   :align: center
+
+
+.. list-table:: サービスの概要と役割
+   :header-rows: 1
+
+   * - No.
+     - サービス
+     - サービス内容
+
+   * - 1
+     - Cloud9
+     - | ブラウザのみでコードを記述可能
+       | EC2上で稼働　（EC2とEBSの課金体系）
+       | リアルタイムに協働でコーディング可能
+       | 今回は仮想デバイスとして使用
+
+   * - 2
+     - Amazon Kinesis Data Streams
+     - | ストリームデータを処理するためのバッファリング層
+       | スループットやデータ量に応じてスケール
+       | Apache Spark/Flink、AWS Lambda等を利用してストリーム処理を実装可能
+
+   * - 3
+     - Lambda
+     - | サーバのプロビジョニングなしでコード実行が可能
+       | イベントドリブン（イベント契機で起動）
+       | アイドル時の支払い不要
+       | 利用料に応じたスケール
+       | 今回はストリームデータをDynamo DBに書き込む
+
+   * - 4
+     - Dynamo DB
+     - | 必要なスループットをユーザが決めて利用可能
+       | ストレージ容量を事前に決める必要がない
+       | 低レイテンシで安定した性能を発揮するように、データ容量・スループット増かを考慮して設計している
+       | 複数データセンターにデータをレプリケーション
+
+   * - 5
+     - Amazon Elasticserch Service (Amazon ES)
+     - | ELK(Elasticserch, Logstash, Kibana)スタックをサポートしたAnalyticsサービス
+       | ElasticserchのAPIをそのまま利用可能
+       | 検索ドメインを作成すると同時にKibanaを利用可能
+       | 日本語解析に対応
+       | Elasticsearchインスタンス時間、Amazon EBSストレージに応じた課金
+
+
+
+.. warning::
+ 工事中
+
+Cloud9
+^^^^^^^^^^
+
+.. warning::
+ Dummy Clientについて記述
+
+Kinesis Data Stream
+^^^^^^^^^^
+Kinesis Data Streamを使用しない場合、以下の問題が発生しうる
+
+* 突発的なメッセージ増減にDBが対応できない可能性がある
+* IoTルールからメッセージ単位でLambdaを起動するとコストが上がる
+* Lambdaの起動が失敗した場合、数回のリトライ後、データをロストする可能性がある
+
+
+IAM
+^^^^^^^^^^
+.. warning::
+ IAMについて記述
+
+.. image:: ./images/IAM_概要図.png
+
+
+IAM
+^^^^^^^^^^
+.. important::
+ | ニアリアルタイムはKibanaで簡単に確認する。
+ | データレイクは生データ保管し、中長期様々なサービスを用いて可視化する。
+
+.. figure:: ./images/ニアリアルタイムな可視化.png
+
+  ニアリアルタイム
+
+.. figure:: ./images/データレイク.png
+
+ データレイク（中長期的なデータ分析）
+
+
+.. figure:: ./images/データレイク活用例.png
+
+  データレイク活用例
+
+元サイト
+ ^^^^^^^^^^
+ https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2
