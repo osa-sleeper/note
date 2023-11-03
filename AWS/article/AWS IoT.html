@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AWS IoT &mdash; Sphinx Note 0.1-SNAPSHOT ドキュメント</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -54,6 +54,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#cloud9">Cloud9</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kinesis-data-stream">Kinesis Data Stream</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#iam">IAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">IAM</a></li>
 </ul>
 </li>
 </ul>
@@ -65,6 +66,7 @@
 <p class="caption" role="heading"><span class="caption-text">Activity:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Activity.html">活動計画</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Activity%20History.html">活動履歴</a></li>
 </ul>
 
         </div>
@@ -104,8 +106,8 @@
 <h3>システム構成図<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>ハンズオン環境の構成と各サービスの概要・役割を以下に示す。</p>
 <img alt="../../_images/AWS_IoT_%E6%A7%8B%E6%88%90%E5%9B%B3%28%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3%29.png" class="align-center" src="../../_images/AWS_IoT_%E6%A7%8B%E6%88%90%E5%9B%B3%28%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3%29.png" />
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">サービスの概要と役割</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">サービスの概要と役割</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>No.</p></th>
 <th class="head"><p>サービス</p></th>
@@ -194,6 +196,34 @@
 <p>IAMについて記述</p>
 </div>
 <img alt="../../_images/IAM_%E6%A6%82%E8%A6%81%E5%9B%B3.png" src="../../_images/IAM_%E6%A6%82%E8%A6%81%E5%9B%B3.png" />
+</section>
+<section id="id3">
+<h3>IAM<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<div class="line-block">
+<div class="line">ニアリアルタイムはKibanaで簡単に確認する。</div>
+<div class="line">データレイクは生データ保管し、中長期様々なサービスを用いて可視化する。</div>
+</div>
+</div>
+<figure class="align-default" id="id5">
+<img alt="../../_images/%E3%83%8B%E3%82%A2%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%81%AA%E5%8F%AF%E8%A6%96%E5%8C%96.png" src="../../_images/%E3%83%8B%E3%82%A2%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%81%AA%E5%8F%AF%E8%A6%96%E5%8C%96.png" />
+<figcaption>
+<p><span class="caption-text">ニアリアルタイム</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<img alt="../../_images/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%82%AF.png" src="../../_images/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%82%AF.png" />
+<figcaption>
+<p><span class="caption-text">データレイク（中長期的なデータ分析）</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<img alt="../../_images/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%82%AF%E6%B4%BB%E7%94%A8%E4%BE%8B.png" src="../../_images/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%82%AF%E6%B4%BB%E7%94%A8%E4%BE%8B.png" />
+<figcaption>
+<p><span class="caption-text">データレイク活用例</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 <dl class="simple">
 <dt>元サイト</dt><dd><p><a class="reference external" href="https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2">https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2</a></p>
 </dd>

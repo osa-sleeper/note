@@ -211,8 +211,12 @@ CSVテーブル
 
 
 
-注記
+ディレクティブ（注記）
 ==========
+参考URLは以下の通り
+
+https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html#directives
+
 
 注釈
 ----------
@@ -235,3 +239,82 @@ CSVテーブル
 
  .. warning::
   これは警告です！
+
+注意
+----------
+
+.. attention::
+ これはattentionです！
+
+::
+
+ .. attention::
+  これはattentionです！
+
+.. caution::
+ これはcautionです！
+
+::
+
+ .. caution::
+  これはcautionです！
+
+
+重要
+----------
+
+.. important::
+ これは重要です！
+
+::
+ 
+ .. important::
+  これは重要です！
+
+
+Tip
+----------
+
+.. tip::
+ これはTipです！
+
+::
+
+ .. tip::
+  これはTipです！
+
+ヒント
+----------
+
+.. hint::
+ これはhintです！
+
+::
+
+ .. hint::
+  これはhintです！
+
+
+危険
+----------
+
+.. danger::
+ これはdangerです！
+
+
+::
+
+ .. danger::
+  これはdangerです！
+
+
+エラー
+----------
+
+.. error::
+ これはerrorです！
+
+::
+
+ .. error::
+  これはerrorです！

@@ -15,6 +15,7 @@
    :caption: Activity:
 
    Activity.rst
+   Activity History.rst
 
 Indices and tables
 ==================

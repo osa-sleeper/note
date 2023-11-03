@@ -61,6 +61,8 @@ Overview
        | 日本語解析に対応
        | Elasticsearchインスタンス時間、Amazon EBSストレージに応じた課金
 
+
+
 .. warning::
  工事中
 
@@ -86,6 +88,25 @@ IAM
 
 .. image:: ./images/IAM_概要図.png
 
+
+IAM
+^^^^^^^^^^
+.. important::
+ | ニアリアルタイムはKibanaで簡単に確認する。
+ | データレイクは生データ保管し、中長期様々なサービスを用いて可視化する。
+
+.. figure:: ./images/ニアリアルタイムな可視化.png
+
+  ニアリアルタイム
+
+.. figure:: ./images/データレイク.png
+
+ データレイク（中長期的なデータ分析）
+
+
+.. figure:: ./images/データレイク活用例.png
+
+  データレイク活用例
 
 元サイト
  ^^^^^^^^^^
