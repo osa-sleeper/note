@@ -5,6 +5,8 @@ Amazon Web Service
    :maxdepth: 3
    :caption: Contents:
 
-   article/Overview.rst
+   article/AWS IoT ハンズオン.rst
    article/AWS IoT.rst
+   article/AWS Cloud9.rst
+
    

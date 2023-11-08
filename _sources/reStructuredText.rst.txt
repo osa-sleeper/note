@@ -1,0 +1,326 @@
+==========
+reST(reStructuredText)文法
+==========
+
+
+コードブロック
+==========
+以下のようにコードブロックを記載できる
+
+\:\:
+----------
+
+説明文::
+
+ コードブロック
+
+::
+
+ 説明文::
+
+  コードブロック
+
+
+\.\. code-block\:\: プログラミング言語
+----------
+
+.. code-block:: python
+
+ import sys
+ print sys.path
+
+
+::
+
+ .. code-block:: python
+ 
+ import sys
+ print sys.path
+ 
+ 
+
+
+
+
+
+テーブル
+==========
+以下のようにテーブルを記載できる
+
+リストテーブル
+----------
+
+.. list-table:: テーブル名
+   :widths: 1, 2
+   :header-rows: 1
+
+   * - No.
+     - 概要
+
+   * - 1
+     - AAAA
+
+   * - 2
+     - BBBB
+
+   * - 3
+     - CCCC
+
+   * - 4
+     - DDDD
+
+
+::
+
+ .. list-table:: テーブル名
+    :widths: 1, 2
+    :header-rows: 1
+
+    * - No.
+      - 概要
+
+    * - 1
+      - AAAA
+
+    * - 2
+      - BBBB
+
+    * - 3
+      - CCCC
+
+    * - 4
+      - DDDD
+
+
+シンプルテーブル
+----------
+====== ====== =======
+A      B      A and B
+====== ====== =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+====== ====== =======
+
+::
+
+ ====== ====== =======
+ A      B      A and B
+ ====== ====== =======
+ False  False  False
+ True   False  False
+ False  True   False
+ True   True   True
+ ====== ====== =======
+
+
+CSVテーブル
+----------
+
+.. csv-table::
+   :header-rows: 1
+
+   "A", "B", "A and B"
+   "False", "False", "False"
+   "True", "False", "False"
+   "False", "True", "False"
+   "True", "True", "True"
+
+::
+ 
+ .. csv-table::
+    :header-rows: 1
+
+    "A", "B", "A and B"
+    "False", "False", "False"
+    "True", "False", "False"
+    "False", "True", "False"
+    "True", "True", "True"
+
+
+複雑なテーブル
+----------
++-----+-------+-------+--------+
+|     | A     | B     | Result |
++=====+=======+=======+========+
+| and | False | False | False  |
++     +-------+-------+        +
+|     | True  | False |        |
++     +-------+-------+        +
+|     | False | True  |        |
++     +-------+-------+--------+
+|     | True  | True  | True   |
++-----+-------+-------+--------+
+| or  | False | False | False  |
++     +-------+-------+--------+
+|     | True  | False | True   |
++     +-------+-------+        +
+|     | False | True  |        |
++     +-------+-------+        +
+|     | True  | True  |        |
++-----+-------+-------+--------+
+
+::
+
+ +-----+-------+-------+--------+
+ |     | A     | B     | Result |
+ +=====+=======+=======+========+
+ | and | False | False | False  |
+ +     +-------+-------+        +
+ |     | True  | False |        |
+ +     +-------+-------+        +
+ |     | False | True  |        |
+ +     +-------+-------+--------+
+ |     | True  | True  | True   |
+ +-----+-------+-------+--------+
+ | or  | False | False | False  |
+ +     +-------+-------+--------+
+ |     | True  | False | True   |
+ +     +-------+-------+        +
+ |     | False | True  |        |
+ +     +-------+-------+        +
+ |     | True  | True  |        |
+ +-----+-------+-------+--------+
+
+
+
+
+ラベルと参照
+==========
+以下のようにタイトルに対して、ラベルと参照を設定できる
+
+.. _label:
+
+タイトル
+----------
+文章
+
+:ref:`label` を参照
+
+
+.. code-block:: rst
+
+ .. _label:
+
+ タイトル
+ ==========
+ 文章
+ 
+ :ref:`label`を参照
+
+
+外部ファイルの読み込み
+===========
+
+::
+
+ .. include:: ./AWS IoT ハンズオン.rst
+
+ディレクティブ（注記）
+==========
+参考URLは以下の通り
+
+https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html#directives
+
+
+注釈
+----------
+
+.. note::
+ これは注釈です！
+
+::
+
+ .. note::
+  これは注釈です！
+
+警告
+----------
+
+.. warning::
+ これは警告です！
+
+::
+
+ .. warning::
+  これは警告です！
+
+注意
+----------
+
+.. attention::
+ これはattentionです！
+
+::
+
+ .. attention::
+  これはattentionです！
+
+.. caution::
+ これはcautionです！
+
+::
+
+ .. caution::
+  これはcautionです！
+
+
+重要
+----------
+
+.. important::
+ これは重要です！
+
+::
+ 
+ .. important::
+  これは重要です！
+
+
+Tip
+----------
+
+.. tip::
+ これはTipです！
+
+::
+
+ .. tip::
+  これはTipです！
+
+ヒント
+----------
+
+.. hint::
+ これはhintです！
+
+::
+
+ .. hint::
+  これはhintです！
+
+
+危険
+----------
+
+.. danger::
+ これはdangerです！
+
+
+::
+
+ .. danger::
+  これはdangerです！
+
+
+エラー
+----------
+
+.. error::
+ これはerrorです！
+
+::
+
+ .. error::
+  これはerrorです！

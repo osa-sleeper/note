@@ -6,8 +6,8 @@
    :caption: Contents:
 
    AWS/Amazon Web Service.rst
-   rst.rst
-
+   reStructuredText.rst
+   Sphinx.rst
 
 
 .. toctree::
