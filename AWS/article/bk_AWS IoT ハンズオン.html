@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS IoT ハンズオン &mdash; Sphinx Note 0.1-SNAPSHOT ドキュメント</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=aaa32a42"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Sphinx Note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Amazon%20Web%20Service.html">Amazon Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reStructuredText.html">reST(reStructuredText)文法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Sphinx.html">Sphinx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Activity:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Activity.html">活動計画</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Activity%20History.html">活動履歴</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sphinx Note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWS IoT ハンズオン</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aws-iot">
+<h1>AWS IoT ハンズオン<a class="headerlink" href="#aws-iot" title="Link to this heading"></a></h1>
+<p>ハンズオンのメモを以下に残す。</p>
+<section id="id1">
+<h2>システム構成図<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>ハンズオン環境の構成と各サービスの概要・役割を以下に示す。</p>
+<a class="reference internal image-reference" href="AWS/article/images/AWS_IoT_構成図(ハンズオン).png"><img alt="AWS/article/images/AWS_IoT_構成図(ハンズオン).png" src="AWS/article/images/AWS_IoT_構成図(ハンズオン).png" style="width: 1000px;" /></a>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">サービスの概要と役割</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>No.</p></th>
+<th class="head"><p>サービス</p></th>
+<th class="head"><p>サービス内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Cloud9</p></td>
+<td><div class="line-block">
+<div class="line">ブラウザのみでコードを記述可能</div>
+<div class="line">EC2上で稼働　（EC2とEBSの課金体系）</div>
+<div class="line">リアルタイムに協働でコーディング可能</div>
+<div class="line">今回は仮想デバイスとして使用</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Amazon Kinesis Data Streams</p></td>
+<td><div class="line-block">
+<div class="line">ストリームデータを処理するためのバッファリング層</div>
+<div class="line">スループットやデータ量に応じてスケール</div>
+<div class="line">Apache Spark/Flink、AWS Lambda等を利用してストリーム処理を実装可能</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Lambda</p></td>
+<td><div class="line-block">
+<div class="line">サーバのプロビジョニングなしでコード実行が可能</div>
+<div class="line">イベントドリブン（イベント契機で起動）</div>
+<div class="line">アイドル時の支払い不要</div>
+<div class="line">利用料に応じたスケール</div>
+<div class="line">今回はストリームデータをDynamo DBに書き込む</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Dynamo DB</p></td>
+<td><div class="line-block">
+<div class="line">必要なスループットをユーザが決めて利用可能</div>
+<div class="line">ストレージ容量を事前に決める必要がない</div>
+<div class="line">低レイテンシで安定した性能を発揮するように、データ容量・スループット増かを考慮して設計している</div>
+<div class="line">複数データセンターにデータをレプリケーション</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Amazon Elasticserch Service (Amazon ES)</p></td>
+<td><div class="line-block">
+<div class="line">ELK(Elasticserch, Logstash, Kibana)スタックをサポートしたAnalyticsサービス</div>
+<div class="line">ElasticserchのAPIをそのまま利用可能</div>
+<div class="line">検索ドメインを作成すると同時にKibanaを利用可能</div>
+<div class="line">日本語解析に対応</div>
+<div class="line">Elasticsearchインスタンス時間、Amazon EBSストレージに応じた課金</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Amazon Kinesis Firehose</p></td>
+<td><div class="line-block">
+<div class="line">ストリームデータをAmazon S3、Amazon RedShift、Amazon ESへ簡単に配信</div>
+<div class="line"><br /></div>
+<div class="line">簡単な設定でストリームデータをバッチ化・圧縮・暗号化可能（最短60秒でデータ配信）</div>
+<div class="line">マネージド（スループットに応じ自動スケール、実装・管理不要、サーバレス(Lambda利用)）</div>
+<div class="line">バッファリング</div>
+<div class="line">S3への一括保管（AWS IoTから直接保存するとメッセージ毎ファイルとなり、集計時に時間がかかってしまう）</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>工事中</p>
+</div>
+</section>
+<section id="cloud9">
+<h2>Cloud9<a class="headerlink" href="#cloud9" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Dummy Clientについて記述</p>
+</div>
+<section id="id2">
+<h3>Cloud9設定・起動<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p><span class="xref std std-doc">AWS Cloud9</span> を参照し、Cloud9の起動・設定を行うこと。</p>
+</section>
+<section id="id3">
+<h3>ダミークライアント<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>Cloud9のターミナル上で以下を実行し、ダミークライアントを構築する。</p>
+<ol class="arabic simple">
+<li><p>AWS IoT Device SDK Python v2のインストール</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>awsiotsdk
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>フォルダ作成と移動</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/environment/dummy_client/certs/
+<span class="nb">cd</span><span class="w"> </span>~/environment/dummy_client/
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>ダミーデバイスのコードをダウンロード</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://awsj-iot-handson.s3-ap-northeast-1.amazonaws.com/aws-iot-core-workshop/dummy_client/device_main.py<span class="w"> </span>-O<span class="w"> </span>device_main.py
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="kinesis-data-stream">
+<h2>Kinesis Data Stream<a class="headerlink" href="#kinesis-data-stream" title="Link to this heading"></a></h2>
+<p>Kinesis Data Streamを使用しない場合、以下の問題が発生しうる</p>
+<ul class="simple">
+<li><p>突発的なメッセージ増減にDBが対応できない可能性がある</p></li>
+<li><p>IoTルールからメッセージ単位でLambdaを起動するとコストが上がる</p></li>
+<li><p>Lambdaの起動が失敗した場合、数回のリトライ後、データをロストする可能性がある</p></li>
+</ul>
+</section>
+<section id="iam">
+<h2>IAM<a class="headerlink" href="#iam" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>IAMについて記述</p>
+</div>
+<a class="reference internal image-reference" href="AWS/article/images/IAM_概要図.png"><img alt="AWS/article/images/IAM_概要図.png" src="AWS/article/images/IAM_概要図.png" style="width: 1000px;" /></a>
+</section>
+<section id="id4">
+<h2>分析に応じたデータの使い分け<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<div class="line-block">
+<div class="line">ニアリアルタイムはAmazon ES (Kibana)で簡単に確認する。</div>
+<div class="line">データレイクは生データ保管し、中長期様々なサービスを用いて可視化する。</div>
+</div>
+</div>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="AWS/article/images/ニアリアルタイムな可視化.png"><img alt="AWS/article/images/ニアリアルタイムな可視化.png" src="AWS/article/images/ニアリアルタイムな可視化.png" style="width: 1000px;" /></a>
+<figcaption>
+<p><span class="caption-text">ニアリアルタイム</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<img alt="AWS/article/images/データレイク.png:width:1000px" src="AWS/article/images/データレイク.png:width:1000px" />
+<figcaption>
+<p><span class="caption-text">データレイク（中長期的なデータ分析）</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="AWS/article/images/データレイク活用例.png"><img alt="AWS/article/images/データレイク活用例.png" src="AWS/article/images/データレイク活用例.png" style="width: 1000px;" /></a>
+<figcaption>
+<p><span class="caption-text">データレイク活用例</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="amazon-kinesis-firehose">
+<h2>Amazon Kinesis Firehose<a class="headerlink" href="#amazon-kinesis-firehose" title="Link to this heading"></a></h2>
+<p>バッファリング、S3への一括保管（メッセージデータのファイル集約）</p>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>AWS IoTから直接保存するとメッセージ毎ファイルとなり、集計時に時間がかかってしまう</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="AWS/article/images/Amazon Kinesis Firehose.png"><img alt="AWS/article/images/Amazon Kinesis Firehose.png" src="AWS/article/images/Amazon Kinesis Firehose.png" style="width: 1000px;" /></a>
+</figure>
+</section>
+<section id="id5">
+<h2>参照サイト<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p><a class="reference external" href="https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2">https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2</a></p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, sleeper.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+==========
+AWS IoT Architecture
+==========
+
+.. figure:: ./images/AWS\ IoT\ アーキテクチャ.png
+ :width: 1000px

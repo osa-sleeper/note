@@ -1,0 +1,42 @@
+==========
+AWS IoT Architecture
+==========
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
+ article/メッセージ/メッセージ.rst
+
+
+Overview
+==========
+.. figure:: ./images/AWS\ IoT\ アーキテクチャ.png
+ :width: 1000px
+
+メッセージ
+==========
+
+デバイスゲートウェイ＆認証サービス
+==========
+
+
+メッセージブローカー
+==========
+
+
+ルールエンジン
+==========
+
+
+デバイスシャドウ
+==========
+
+
+レジストリ
+==========
+
+
+参照サイト
+==========
+ `1.1.1 AWS IoT Core のサービス説明 <https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step1>`_ を参照。

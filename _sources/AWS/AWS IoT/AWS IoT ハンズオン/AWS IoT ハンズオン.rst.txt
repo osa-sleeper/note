@@ -1,0 +1,160 @@
+==========
+AWS IoT ハンズオン
+==========
+
+.. toctree::
+
+ハンズオンのメモを以下に残す。
+
+システム構成図
+==========
+ハンズオン環境の構成と各サービスの概要・役割を以下に示す。
+
+.. image:: ./images/AWS_IoT_構成図(ハンズオン).png
+   :width: 1000px
+
+
+.. list-table:: サービスの概要と役割
+   :header-rows: 1
+
+   * - No.
+     - サービス
+     - サービス内容
+
+   * - 1
+     - Cloud9
+     - | ブラウザのみでコードを記述可能
+       | EC2上で稼働　（EC2とEBSの課金体系）
+       | リアルタイムに協働でコーディング可能
+       | 今回は仮想デバイスとして使用
+
+   * - 2
+     - Amazon Kinesis Data Streams
+     - | ストリームデータを処理するためのバッファリング層
+       | スループットやデータ量に応じてスケール
+       | Apache Spark/Flink、AWS Lambda等を利用してストリーム処理を実装可能
+
+   * - 3
+     - Lambda
+     - | サーバのプロビジョニングなしでコード実行が可能
+       | イベントドリブン（イベント契機で起動）
+       | アイドル時の支払い不要
+       | 利用料に応じたスケール
+       | 今回はストリームデータをDynamo DBに書き込む
+
+   * - 4
+     - Dynamo DB
+     - | 必要なスループットをユーザが決めて利用可能
+       | ストレージ容量を事前に決める必要がない
+       | 低レイテンシで安定した性能を発揮するように、データ容量・スループット増かを考慮して設計している
+       | 複数データセンターにデータをレプリケーション
+
+   * - 5
+     - Amazon Elasticserch Service (Amazon ES)
+     - | ELK(Elasticserch, Logstash, Kibana)スタックをサポートしたAnalyticsサービス
+       | ElasticserchのAPIをそのまま利用可能
+       | 検索ドメインを作成すると同時にKibanaを利用可能
+       | 日本語解析に対応
+       | Elasticsearchインスタンス時間、Amazon EBSストレージに応じた課金
+
+   * - 6
+     - Amazon Kinesis Firehose
+     - | ストリームデータをAmazon S3、Amazon RedShift、Amazon ESへ簡単に配信
+       | 
+       | 簡単な設定でストリームデータをバッチ化・圧縮・暗号化可能（最短60秒でデータ配信）
+       | マネージド（スループットに応じ自動スケール、実装・管理不要、サーバレス(Lambda利用)）
+       | バッファリング
+       | S3への一括保管（AWS IoTから直接保存するとメッセージ毎ファイルとなり、集計時に時間がかかってしまう）
+
+.. warning::
+ 工事中
+
+Cloud9
+==========
+
+.. warning::
+ Dummy Clientについて記述
+
+
+Cloud9設定・起動
+----------
+
+:doc:`AWS Cloud9 <AWS Cloud9>` を参照し、Cloud9の起動・設定を行うこと。
+
+
+ダミークライアント
+----------
+Cloud9のターミナル上で以下を実行し、ダミークライアントを構築する。
+
+#. AWS IoT Device SDK Python v2のインストール
+ .. code-block:: bash
+  
+   pip3 install --user awsiotsdk
+
+2. フォルダ作成と移動
+ .. code-block:: bash
+  
+  mkdir -p ~/environment/dummy_client/certs/
+  cd ~/environment/dummy_client/
+
+3. ダミーデバイスのコードをダウンロード
+ .. code-block:: bash
+   
+  wget https://awsj-iot-handson.s3-ap-northeast-1.amazonaws.com/aws-iot-core-workshop/dummy_client/device_main.py -O device_main.py
+
+
+
+
+Kinesis Data Stream
+==========
+Kinesis Data Streamを使用しない場合、以下の問題が発生しうる
+
+* 突発的なメッセージ増減にDBが対応できない可能性がある
+* IoTルールからメッセージ単位でLambdaを起動するとコストが上がる
+* Lambdaの起動が失敗した場合、数回のリトライ後、データをロストする可能性がある
+
+
+IAM
+==========
+.. warning::
+ IAMについて記述
+
+.. image:: ./images/IAM_概要図.png
+   :width: 1000px
+
+分析に応じたデータの使い分け
+==========
+.. important::
+ | ニアリアルタイムはAmazon ES (Kibana)で簡単に確認する。
+ | データレイクは生データ保管し、中長期様々なサービスを用いて可視化する。
+
+.. figure:: ./images/ニアリアルタイムな可視化.png
+  :width: 1000px
+
+  ニアリアルタイム
+
+.. figure:: ./images/データレイク.png
+  :width: 1000px
+
+ データレイク（中長期的なデータ分析）
+
+
+.. figure:: ./images/データレイク活用例.png
+  :width: 1000px
+
+  データレイク活用例
+
+Amazon Kinesis Firehose
+==========
+バッファリング、S3への一括保管（メッセージデータのファイル集約）
+
+.. important::
+ AWS IoTから直接保存するとメッセージ毎ファイルとなり、集計時に時間がかかってしまう
+
+.. figure:: ./images/Amazon\ Kinesis\ Firehose.png
+  :width: 1000px
+
+
+参照サイト
+==========
+ https://catalog.us-east-1.prod.workshops.aws/workshops/b3e0b830-79b8-4c1d-8a4c-e10406600035/ja-JP/phase1/step2

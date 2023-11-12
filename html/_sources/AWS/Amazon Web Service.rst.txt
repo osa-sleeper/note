@@ -2,11 +2,8 @@ Amazon Web Service
 ========================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Contents:
 
-   article/AWS IoT ハンズオン.rst
-   article/AWS IoT.rst
-   article/AWS Cloud9.rst
-
-   
+   AWS Cloud9/AWS Cloud9.rst
+   AWS IoT/AWS IoT.rst

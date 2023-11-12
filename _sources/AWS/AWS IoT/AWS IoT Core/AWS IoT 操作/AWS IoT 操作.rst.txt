@@ -1,0 +1,97 @@
+==========
+AWS IoT Core 操作
+==========
+
+.. toctree::
+
+デバイスシャドウ
+==========
+クラウド上でデバイスシャドウに対して設定値を指定することにより、デバイスが設定値を同期して、デバイスの遠隔設定ができる。
+
+
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ.png
+ :width: 1000px
+
+ デバイスシャドウ
+
+
+デバイスシャドウの更新（メッセージ送信頻度の遠隔設定）
+==========
+
+#. 「すべてのデバイス」の「モノ」を選択する。
+#. 「作成したモノ（xxxx-mono-property-yyyymmdd）」を選択する。
+#. 画面下部のタブから「Device Shadow」を選択する。
+#. 表示されたリストから「Classic Shadow」を選択する。
+
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ（初期設定）.png
+ :width: 1000px
+
+ デバイスシャドウ（初期設定）
+
+5.  「Device Shadow ドキュメント」の「編集」ボタンを選択する。
+#. 表示された編集画面で、JSON内容を以下のように変更する。
+
+::
+ 
+ {
+     "state": {
+         "reported": {
+             "wait_time": 5
+         },
+         "desired": {
+             "wait_time": 1
+         }
+     }
+ }
+
+.. note::
+ 「desired」内に「"welcome": "aws-iot"」というプロパティ含まれているときは、「"welcome": null」で削除可能である。
+
+ ::
+  
+  {
+      "state": {
+          "reported": {
+              "wait_time": 5,
+              "welcome": "aws-iot"
+
+          },
+          "desired": {
+              "wait_time": 1,
+              "welcome": null
+          }
+      }
+  }
+
+.. note::
+ シャドウドキュメントのうち 「desired」がデバイスに指示している状態、 「reported」がデバイスから報告された状態である。 
+ 「desired」と「reported」の状態に差異がある場合、「delta」というフィールドに差分が表示される。
+
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ（編集）.png
+ :width: 1000px
+
+ デバイスシャドウ（変更）
+
+
+デバイスシャドウの更新確認（シャドウデバイス）
+==========
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ更新確認（シャドウデバイス）.png
+ :width: 1000px
+
+ デバイスシャドウ更新確認（シャドウデバイス）
+
+デバイスシャドウの更新確認（デバイス）
+==========
+
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ更新確認（デバイス）.png
+ :width: 1000px
+
+ デバイスシャドウ更新確認（デバイス）
+
+デバイスシャドウの更新確認（AWS IoT）
+==========
+
+.. figure:: ./images/AWS\ IoT\ Core\ デバイスシャドウ更新確認（クラウド）.png
+ :width: 1000px
+
+ デバイスシャドウ更新確認（クラウド）

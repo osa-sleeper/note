@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS IoT Core 設定 &mdash; Sphinx Note 0.1-SNAPSHOT ドキュメント</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=aaa32a42"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/translations.js?v=4dbe4bdc"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../../search.html" />
+    <link rel="next" title="AWS IoT Core 操作" href="../AWS%20IoT%20%E6%93%8D%E4%BD%9C/AWS%20IoT%20%E6%93%8D%E4%BD%9C.html" />
+    <link rel="prev" title="メッセージ" href="../../AWS%20IoT%20Architecture/article/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Sphinx Note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Amazon%20Web%20Service.html">Amazon Web Service</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../AWS%20Cloud9/AWS%20Cloud9.html">AWS Cloud9</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../AWS%20IoT.html">AWS IoT</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../AWS%20IoT%20Architecture/AWS%20IoT%20Architecture.html">AWS IoT Architecture</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AWS IoT Core 設定</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aws-iot">AWS IoT エンドポイント</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">ログレベルの設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iot">IoTポリシーの作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">モノの作成</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../AWS%20IoT%20%E6%93%8D%E4%BD%9C/AWS%20IoT%20%E6%93%8D%E4%BD%9C.html">AWS IoT Core 操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../AWS%20IoT%20%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/AWS%20IoT%20%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3.html">AWS IoT ハンズオン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reStructuredText.html">reST(reStructuredText)文法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Sphinx.html">Sphinx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Activity:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Activity.html">活動計画</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Activity%20History.html">活動履歴</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Sphinx Note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../Amazon%20Web%20Service.html">Amazon Web Service</a></li>
+          <li class="breadcrumb-item"><a href="../../AWS%20IoT.html">AWS IoT</a></li>
+      <li class="breadcrumb-item active">AWS IoT Core 設定</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aws-iot-core">
+<h1>AWS IoT Core 設定<a class="headerlink" href="#aws-iot-core" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="aws-iot">
+<h2>AWS IoT エンドポイント<a class="headerlink" href="#aws-iot" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>「設定」を選択する。</p></li>
+<li><p>「エンドポイント」の値を確認する。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core 接続先確認.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E6%8E%A5%E7%B6%9A%E5%85%88%E7%A2%BA%E8%AA%8D.png" src="../../../../_images/AWS%20IoT%20Core%20%E6%8E%A5%E7%B6%9A%E5%85%88%E7%A2%BA%E8%AA%8D.png" style="width: 1000px;" /></a>
+</figure>
+</section>
+<section id="id1">
+<h2>ログレベルの設定<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>「ログ」の「ログの管理」ボタンを選択する。</p></li>
+<li><p>「ロールを作成」ボタンを選択する。</p></li>
+<li><p>「ロール名」にロール名を入力する。</p></li>
+<li><p>「ログレベル」で、プルダウンから「Infomational」を選択する。</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ログレベルについて深堀する</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ログ設定.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A.png" style="width: 1000px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ログ設定-ロール作成.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90.png" style="width: 1000px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ログ設定-ロール作成(ロール名設定).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90%28%E3%83%AD%E3%83%BC%E3%83%AB%E5%90%8D%E8%A8%AD%E5%AE%9A%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90%28%E3%83%AD%E3%83%BC%E3%83%AB%E5%90%8D%E8%A8%AD%E5%AE%9A%29.png" style="width: 1000px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ログ設定-ロール作成(情報レベル設定).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90%28%E6%83%85%E5%A0%B1%E3%83%AC%E3%83%99%E3%83%AB%E8%A8%AD%E5%AE%9A%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%AD%E3%82%B0%E8%A8%AD%E5%AE%9A-%E3%83%AD%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90%28%E6%83%85%E5%A0%B1%E3%83%AC%E3%83%99%E3%83%AB%E8%A8%AD%E5%AE%9A%29.png" style="width: 1000px;" /></a>
+</figure>
+</section>
+<section id="iot">
+<h2>IoTポリシーの作成<a class="headerlink" href="#iot" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>左のサイドメニューから「セキュリティ」の「ポリシー」を選択する。</p></li>
+<li><p>「ポリシーの作成」ボタンを選択する。</p></li>
+<li><p>「ポリシー名」に「&lt;名前等&gt;-yyyymmdd-policy」を入力する。</p></li>
+<li><p>「ポリシードキュメント」の「ビルダー」が選択されていることを確認する。</p></li>
+<li><p>「ポリシー効果」で「許可」を選択する。</p></li>
+<li><p>「ポリシーアクション」にすべての「AWS IoT アクション」の「*」を選択する。</p></li>
+<li><p>「ポリシーリソース」に「*」を入力する。</p></li>
+<li><p>「作成」ボタンを選択する。</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ポリシードキュメントについて深堀する</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ポリシー作成.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E4%BD%9C%E6%88%90.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E4%BD%9C%E6%88%90.png" style="width: 1000px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core ポリシー作成(ポリシー設定).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E4%BD%9C%E6%88%90%28%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E8%A8%AD%E5%AE%9A%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E4%BD%9C%E6%88%90%28%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E8%A8%AD%E5%AE%9A%29.png" style="width: 1000px;" /></a>
+</figure>
+</section>
+<section id="id2">
+<h2>モノの作成<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>左サイドメニューから「すべてのデバイス」の「モノ」を選択する。</p></li>
+<li><p>「モノを作成する」を選択する。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90.png" style="width: 1000px;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>「１つのモノを作成」を選択する。</p></li>
+<li><p>「次へ」を選択する。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成2.png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%902.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%902.png" style="width: 1000px;" /></a>
+</figure>
+<p>5. 「モノの名前」を設定する。（後で参照するのでメモしておく。）
+6.「名前のないシャドウ（クラシック）」を選択する。
+7.「次へ」を選択する。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Device Shadowの選択肢の違いを確認する</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成(プロパティ設定).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E8%A8%AD%E5%AE%9A%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E8%A8%AD%E5%AE%9A%29.png" style="width: 1000px;" /></a>
+</figure>
+<ol class="arabic simple" start="8">
+<li><p>「新しい証明書を自動生成（推奨）」を選択する</p></li>
+<li><p>「次へ」を選択する</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成(証明書作成).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E8%A8%BC%E6%98%8E%E6%9B%B8%E4%BD%9C%E6%88%90%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E8%A8%BC%E6%98%8E%E6%9B%B8%E4%BD%9C%E6%88%90%29.png" style="width: 1000px;" /></a>
+</figure>
+<ol class="arabic simple" start="10">
+<li><p>先行手順で作成済みのポリシーにチェックを入れる</p></li>
+<li><p>「モノを作成」を選択する。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成(ポリシーアタッチ).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%82%A2%E3%82%BF%E3%83%83%E3%83%81%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%82%A2%E3%82%BF%E3%83%83%E3%83%81%29.png" style="width: 1000px;" /></a>
+</figure>
+<ol class="arabic simple" start="12">
+<li><p>以下のファイルをダウンロードする。</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>このタイミングしかダウンロードできないため注意。</p>
+<ul class="simple">
+<li><p>デバイス証明書</p></li>
+<li><p>パブリックキーファイル</p></li>
+<li><p>プライベートキーファイル</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>ルートCA証明書はクライアント側でダウンロードするため、ダウンロード不要。</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/AWS IoT Core モノ作成(証明書ダウンロード).png"><img alt="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%29.png" src="../../../../_images/AWS%20IoT%20Core%20%E3%83%A2%E3%83%8E%E4%BD%9C%E6%88%90%28%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%29.png" style="width: 500px;" /></a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../AWS%20IoT%20Architecture/article/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8.html" class="btn btn-neutral float-left" title="メッセージ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AWS%20IoT%20%E6%93%8D%E4%BD%9C/AWS%20IoT%20%E6%93%8D%E4%BD%9C.html" class="btn btn-neutral float-right" title="AWS IoT Core 操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, sleeper.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
