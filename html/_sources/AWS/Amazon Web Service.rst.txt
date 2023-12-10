@@ -5,5 +5,5 @@ Amazon Web Service
    :maxdepth: 4
    :caption: Contents:
 
-   AWS Cloud9/AWS Cloud9.rst
    AWS IoT/AWS IoT.rst
+   AWS Cloud9/AWS Cloud9.rst
