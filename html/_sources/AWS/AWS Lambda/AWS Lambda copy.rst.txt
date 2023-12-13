@@ -1,0 +1,39 @@
+.. toctree::
+   :maxdepth: 4
+   :caption: Contents:
+
+    AWS Lambda copy.rst
+
+
+==========
+AWS Lambda
+==========
+
+AWS Lambda設定
+==========
+以下の内容で設定を行う。
+
+AWS Lambda(Amazon Kinesis Data StreamsのデータをAmazon DynamoDBに保存する)
+----------
+
+IAMロール設定
+^^^^^^^^^^
+
+.. image:: ./images/IAM_Lambdaロール作成.png
+
+以下の管理ポリシーを検索しチェックする。
+
+::
+ 
+ AWSLambdaBasicExecutionRole
+ AmazonKinesisReadOnlyAccess
+ AmazonDynamoDBFullAccess
+
+.. image:: ./images/IAM_Lambdaロール作成2.png
+
+IAMロール(AWS IoT)設定
+^^^^^^^^^^
+
+.. image:: ./images/IAM_Lambdaロール作成(IoT).png
+.. image:: ./images/IAM_Lambdaロール作成(IoT)2.png
+.. image:: ./images/IAM_Lambdaロール作成(IoT)3.png

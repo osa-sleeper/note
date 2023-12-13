@@ -1,0 +1,21 @@
+.. toctree::
+
+==========
+Amazon OpenSearch Service
+==========
+
+Amazon OpenSearch Serviceの構築
+==========
+Amazon OpenSearch Serviceのドメイン作成を以下の通り実施する。
+
+#. AWS IoT CoreからAmazon Opensearch Serviceにデータ転送するためのルールを作成
+#. Amazon OpenSearch ServiceをAWS CloudFormationで作成
+
+
+
+
+.. image:: ./images/Amazon\ OpenSearch\ Service\ 概要図.png
+.. image:: ./images/Amazon\ OpenSearch\ Service\ ドメイン作成.png
+.. image:: ./images/Amazon\ OpenSearch\ Service\ ドメイン作成2.png
+.. image:: ./images/Amazon\ OpenSearch\ Service\ ドメイン作成3.png
+.. image:: ./images/Amazon\ OpenSearch\ Service\ ドメイン作成4.png

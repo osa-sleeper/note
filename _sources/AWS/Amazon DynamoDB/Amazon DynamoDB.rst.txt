@@ -1,0 +1,7 @@
+.. toctree::
+
+==========
+Amazon DynamoDB
+==========
+
+.. image:: ./images/Amazon\ DynamoDB\ テーブル作成.png

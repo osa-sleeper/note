@@ -1,0 +1,14 @@
+.. toctree::
+
+==========
+Amazon Kinesis Data Streams
+==========
+サーバーレスストリーミングデータサービスであり、あらゆる規模のデータストリームを簡単にキャプチャ、処理、保存することを可能にする。
+
+
+Amazon Kinesis Data Streams設定
+==========
+以下の内容で設定を行う。
+
+.. image:: ./images/Amazon\ Kinesis\ Data\ Streams\ データストリーム作成.png
+.. image:: ./images/Amazon\ Kinesis\ Data\ Streams\ データストリーム作成完了.png

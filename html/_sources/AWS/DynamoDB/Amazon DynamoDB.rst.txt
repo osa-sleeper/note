@@ -1,0 +1,11 @@
+.. toctree::
+
+==========
+Amazon DynamoDB
+==========
+
+Amazon DynamoDB設定
+==========
+以下の内容で設定を行う。
+
+.. image:: ./images/Amazon\ DynamoDB\ テーブル作成.png

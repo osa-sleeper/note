@@ -7,3 +7,7 @@ Amazon Web Service
 
    AWS IoT/AWS IoT.rst
    AWS Cloud9/AWS Cloud9.rst
+   Amazon Kinesis Data Streams/Amazon Kinesis Data Streams.rst
+   Amazon DynamoDB/Amazon DynamoDB.rst
+   AWS Lambda/AWS Lambda.rst
+   Amazon OpenSearch Service/Amazon OpenSearch Service.rst

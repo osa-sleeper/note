@@ -81,3 +81,16 @@ TODO
    * - 2023/11/12(日)
      - | 記事構成整理(シャドウデバイス)
      - 2.0
+
+   * - 2023/12/10(日)
+     - | アプリケーション向けDB（Kinesis、DynamoDB、Lambda）
+     - 5.5
+  
+   * - 2023/12/13(水)
+     - | ニアリアルタイムな可視化（Open Search Service）
+     - 1.5
+
+   * - 2023/12/14(木)
+     - | ニアリアルタイムな可視化（Open Search Service）
+       | データレイク（S3、Kinesis Data Firehose）
+     - 2.5
